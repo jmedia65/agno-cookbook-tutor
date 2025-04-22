@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Streamlit"
+title: "09. Streamlit"
 ---
 
 # Chapter 9: Streamlit Application

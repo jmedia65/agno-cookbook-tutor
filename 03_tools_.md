@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Tools"
+title: "03. Tools"
 ---
 
 # Chapter 3: Tools

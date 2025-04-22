@@ -40,7 +40,7 @@ flowchart TD
 "]
     A7["Reasoning / Thinking Tools
 "]
-    A8["Streamlit Application
+    A8["Agno Framework
 "]
     A0 -- "Uses AI Engine" --> A2
     A0 -- "Uses for Actions" --> A3
@@ -50,8 +50,8 @@ flowchart TD
     A0 -- "Uses for Planning" --> A7
     A1 -- "Coordinates Members" --> A0
     A1 -- "Uses AI Engine (Leader)" --> A2
-    A8 -- "Provides UI for" --> A0
-    A8 -- "Provides UI for" --> A1
+    A8 -- "Builds Specialized AI Assistants --> A0
+    A8 -- "Builds Multiple Agents" --> A1
 ```
 
 ## Chapters

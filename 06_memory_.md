@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Memory"
+title: "06. Memory"
 ---
 
 # Chapter 6: Memory

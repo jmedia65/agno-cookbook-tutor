@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Storage"
+title: "07. Storage"
 ---
 
 # Chapter 7: Storage

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Teams"
+title: "08. Teams"
 ---
 
 # Chapter 8: Team

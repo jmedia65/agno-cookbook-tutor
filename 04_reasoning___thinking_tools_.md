@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Reasoning"
+title: "04. Reasoning"
 ---
 
 # Chapter 4: Reasoning / Thinking Tools

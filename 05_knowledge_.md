@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Knowledge"
+title: "05. Knowledge"
 ---
 
 # Chapter 5: Knowledge

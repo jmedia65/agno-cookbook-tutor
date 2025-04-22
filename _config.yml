@@ -1,6 +1,6 @@
 # Basic site settings
-title: Agno Cookbook Tutorial - Learn to Build AI Assistants
-tagline: Master Agno Framework
+title: Agno Cookbook Tutorial
+tagline: Learn the Agno Framework
 description: A hands-on guide to mastering the Agno framework through practical examples from the official Cookbook.
 
 # Theme settings
@@ -12,15 +12,15 @@ nav_sort: case_sensitive
 # Aux links (shown in upper right)
 aux_links:
   Repository: https://github.com/jmedia65/agno-cookbook-tutor
-    
+
 # Color scheme
 color_scheme: light
 
 # Author settings
 author:
-    name: Max Braglia
-    url: https://hiremax.now/
-    twitter: maxbraglia
+  name: Max Braglia
+  url: https://hiremax.now/
+  twitter: maxbraglia
 
 # Mermaid settings
 mermaid:
@@ -39,7 +39,7 @@ callouts:
   best-practice:
     title: Best Practice
     color: green
-  
+
 # The custom navigation
 nav:
   - Home: index.md

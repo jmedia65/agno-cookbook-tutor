@@ -1,8 +1,13 @@
+---
+layout: default
+title: "Tools"
+---
+
 # Chapter 3: Tools
 
 In the [previous chapter](02_agent_.md), we met the **[Agent](02_agent_.md)**, our specialized AI assistant built around a powerful **[Model](01_model_.md)**. We learned how to give Agents instructions to guide their behavior.
 
-But what if our Agent needs information that wasn't in its training data? What if it needs to know the *current* stock price of Apple, search the web for today's news, or perform a complex calculation? By default, an [Agent](02_agent_.md)'s knowledge is frozen at the time its [Model](01_model_.md) was trained. It can't access real-time information or perform actions outside of generating text.
+But what if our Agent needs information that wasn't in its training data? What if it needs to know the _current_ stock price of Apple, search the web for today's news, or perform a complex calculation? By default, an [Agent](02_agent_.md)'s knowledge is frozen at the time its [Model](01_model_.md) was trained. It can't access real-time information or perform actions outside of generating text.
 
 This is where **Tools** come in!
 
@@ -12,8 +17,8 @@ Imagine you hire a very smart assistant ([Agent](02_agent_.md)) with a great bra
 
 **Tools** in Agno are like that specialized equipment. They give your Agents the ability to:
 
-*   **Interact with the outside world:** Search the web (using DuckDuckGo, Exa, Google), get financial data (YFinance), fetch data from databases (SQL), connect to other software (MCP, E2B).
-*   **Perform specific actions:** Use a calculator, execute code.
+- **Interact with the outside world:** Search the web (using DuckDuckGo, Exa, Google), get financial data (YFinance), fetch data from databases (SQL), connect to other software (MCP, E2B).
+- **Perform specific actions:** Use a calculator, execute code.
 
 By equipping an [Agent](02_agent_.md) with Tools, you empower it to go beyond its pre-trained knowledge and perform tasks that require real-time data, calculations, or interactions with other systems.
 
@@ -21,12 +26,12 @@ Think of them as superpowers for your Agents!
 
 Some common tools you might use in Agno include:
 
-*   `DuckDuckGoTools`: For searching the web.
-*   `YFinanceTools`: For getting stock prices and financial data.
-*   `CalculatorTools`: For performing math calculations.
-*   `SQLTools`: For querying databases.
-*   `ReasoningTools`: Helps the agent think step-by-step (more on this in the [next chapter](04_reasoning___thinking_tools_.md)!).
-*   `MCPTools`, `E2BTools`: For interacting with other software platforms.
+- `DuckDuckGoTools`: For searching the web.
+- `YFinanceTools`: For getting stock prices and financial data.
+- `CalculatorTools`: For performing math calculations.
+- `SQLTools`: For querying databases.
+- `ReasoningTools`: Helps the agent think step-by-step (more on this in the [next chapter](04_reasoning___thinking_tools_.md)!).
+- `MCPTools`, `E2BTools`: For interacting with other software platforms.
 
 ## Giving Your Agent a Tool
 
@@ -97,9 +102,9 @@ finance_agent = Agent(
 # - "Give me company info for AMZN."
 ```
 
-Here, the `finance_agent` is equipped with a `YFinanceTools` instance configured to fetch stock prices, analyst recommendations, *and* company info. The [Agent](02_agent_.md) will automatically figure out which part of the tool to use based on the question asked.
+Here, the `finance_agent` is equipped with a `YFinanceTools` instance configured to fetch stock prices, analyst recommendations, _and_ company info. The [Agent](02_agent_.md) will automatically figure out which part of the tool to use based on the question asked.
 
-You can also give an Agent multiple *different* tools:
+You can also give an Agent multiple _different_ tools:
 
 ```python
 # File: adapted from agents/agent_with_reasoning.py
@@ -176,12 +181,12 @@ You've learned how **Tools** give your Agno **[Agents](02_agent_.md)** superpowe
 
 Key Takeaways:
 
-*   Tools enable Agents to perform actions like searching the web, fetching real-time data, doing calculations, or running code.
-*   You equip an [Agent](02_agent_.md) with tools by passing a list of tool instances to the `tools=` parameter during initialization.
-*   Agents can use multiple tools, and the underlying [Model](01_model_.md) intelligently decides which tool to use based on the task.
-*   Tools make Agents vastly more capable and useful for practical applications.
+- Tools enable Agents to perform actions like searching the web, fetching real-time data, doing calculations, or running code.
+- You equip an [Agent](02_agent_.md) with tools by passing a list of tool instances to the `tools=` parameter during initialization.
+- Agents can use multiple tools, and the underlying [Model](01_model_.md) intelligently decides which tool to use based on the task.
+- Tools make Agents vastly more capable and useful for practical applications.
 
-While tools like web search and calculators are powerful, sometimes Agents need help *thinking* through complex problems step-by-step. That's where a special kind of tool comes in. Let's explore that next!
+While tools like web search and calculators are powerful, sometimes Agents need help _thinking_ through complex problems step-by-step. That's where a special kind of tool comes in. Let's explore that next!
 
 **[Next Chapter: Reasoning / Thinking Tools](04_reasoning___thinking_tools_.md)**
 

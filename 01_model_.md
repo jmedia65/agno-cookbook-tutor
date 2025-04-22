@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Models"
+---
+
 # Chapter 1: Model
 
 Welcome to the Agno examples tutorial! We're going to build some cool AI applications together. But first, let's start with the very core component: the **Model**.
@@ -10,17 +15,17 @@ Think of an AI Model like the engine in a car. Just like cars can have different
 
 These Models are sophisticated AI systems trained by companies like OpenAI (makers of GPT-4o), Anthropic (makers of Claude), Google (makers of Gemini), and others (like Llama). Each model has its own strengths and weaknesses:
 
-*   Some are great at creative writing.
-*   Others excel at logical reasoning and math.
-*   Some are faster but maybe less powerful.
-*   Some are very powerful but might cost more to use.
+- Some are great at creative writing.
+- Others excel at logical reasoning and math.
+- Some are faster but maybe less powerful.
+- Some are very powerful but might cost more to use.
 
 Examples of popular models include:
 
-*   `gpt-4o-mini`, `gpt-4o` (from OpenAI)
-*   `claude-3-7-sonnet-latest` (from Anthropic)
-*   `gemini-2.0-flash-exp` (from Google)
-*   `meta-llama/llama-4-scout-17b-16e-instruct` (from Meta, often accessed via services like Groq)
+- `gpt-4o-mini`, `gpt-4o` (from OpenAI)
+- `claude-3-7-sonnet-latest` (from Anthropic)
+- `gemini-2.0-flash-exp` (from Google)
+- `meta-llama/llama-4-scout-17b-16e-instruct` (from Meta, often accessed via services like Groq)
 
 The **Model** in Agno represents this underlying AI engine. It's the core component that understands language, processes information, and generates responses for your AI applications.
 
@@ -28,9 +33,9 @@ The **Model** in Agno represents this underlying AI engine. It's the core compon
 
 You might want to choose different models for different tasks. For example:
 
-*   An [Agent](02_agent_.md) designed to write poetry might use a highly creative model like Claude Sonnet.
-*   An [Agent](02_agent_.md) designed to analyze financial data might use a model known for strong reasoning like GPT-4o.
-*   A simple chatbot might use a faster, cheaper model like `gpt-4o-mini`.
+- An [Agent](02_agent_.md) designed to write poetry might use a highly creative model like Claude Sonnet.
+- An [Agent](02_agent_.md) designed to analyze financial data might use a model known for strong reasoning like GPT-4o.
+- A simple chatbot might use a faster, cheaper model like `gpt-4o-mini`.
 
 Agno makes it super easy to specify which model an [Agent](02_agent_.md) or a [Team](08_team_.md) should use, and even swap them out later if you change your mind!
 
@@ -151,10 +156,10 @@ Agno's `Model` classes (`OpenAIChat`, `Claude`, `Gemini`, etc.) handle the compl
 
 You've learned about the **Model**, the fundamental AI engine that powers Agents and Teams in Agno. It's the source of intelligence, understanding, and generation capabilities. Key takeaways:
 
-*   A `Model` is like the "brain" or "engine" of an AI Agent.
-*   Different models (GPT-4o, Claude, Gemini) have different strengths.
-*   Agno makes it easy to choose and switch between models from various providers (OpenAI, Anthropic, Google, etc.).
-*   You assign a `Model` when creating an [Agent](02_agent_.md) using the `model=` parameter.
+- A `Model` is like the "brain" or "engine" of an AI Agent.
+- Different models (GPT-4o, Claude, Gemini) have different strengths.
+- Agno makes it easy to choose and switch between models from various providers (OpenAI, Anthropic, Google, etc.).
+- You assign a `Model` when creating an [Agent](02_agent_.md) using the `model=` parameter.
 
 Now that we understand the engine, let's learn more about the vehicle it powers! In the next chapter, we'll dive into the concept of the [Agent](02_agent_.md) itself.
 

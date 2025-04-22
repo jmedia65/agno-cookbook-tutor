@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Agents"
+---
+
 # Chapter 2: Agent
 
 Welcome back! In the [previous chapter](01_model_.md), we learned about the **[Model](01_model_.md)** – the AI "brain" or "engine" that provides the core intelligence for our applications. We saw how different models (like GPT-4o or Claude) offer various capabilities.
@@ -8,14 +13,14 @@ Now, let's talk about the **Agent**, the star player in the Agno framework!
 
 If the [Model](01_model_.md) is the engine, think of the **Agent** as the specialized vehicle built around that engine. It's the core building block you'll use most often in Agno.
 
-Imagine you're building a company. You wouldn't hire just one person with a general "brain" to do everything, right? You'd hire specialists: a customer support representative, a researcher, a financial analyst, a creative writer, etc. Each specialist has the same basic ability to think (like our AI [Model](01_model_.md)), but they are trained and equipped for a *specific role or task*.
+Imagine you're building a company. You wouldn't hire just one person with a general "brain" to do everything, right? You'd hire specialists: a customer support representative, a researcher, a financial analyst, a creative writer, etc. Each specialist has the same basic ability to think (like our AI [Model](01_model_.md)), but they are trained and equipped for a _specific role or task_.
 
 An **Agent** in Agno is exactly like that: a specialized AI assistant designed for a particular job.
 
-*   It has a **brain** (the [Model](01_model_.md) we choose for it).
-*   It can follow specific **instructions** (like a job description).
-*   It can use **[Tools](03_tools_.md)** (like a researcher using a search engine or a financial analyst using a calculator).
-*   It works towards accomplishing **goals** based on its role and the task you give it.
+- It has a **brain** (the [Model](01_model_.md) we choose for it).
+- It can follow specific **instructions** (like a job description).
+- It can use **[Tools](03_tools_.md)** (like a researcher using a search engine or a financial analyst using a calculator).
+- It works towards accomplishing **goals** based on its role and the task you give it.
 
 Just like hiring different specialists, you create different Agents in Agno tailored to specific needs.
 
@@ -23,9 +28,9 @@ Just like hiring different specialists, you create different Agents in Agno tail
 
 Using Agents allows you to break down complex problems into smaller, manageable parts. Instead of one giant AI trying to do everything, you can have:
 
-*   A `WebSearchAgent` that's really good at finding information online.
-*   A `FinanceAgent` that knows how to get stock prices.
-*   A `CustomerSupportAgent` that's polite and knows your product documentation.
+- A `WebSearchAgent` that's really good at finding information online.
+- A `FinanceAgent` that knows how to get stock prices.
+- A `CustomerSupportAgent` that's polite and knows your product documentation.
 
 This makes your AI applications more organized, capable, and easier to manage.
 
@@ -66,7 +71,7 @@ basic_assistant.print_response("What is the capital of France?", stream=True)
 
 ## Giving Agents Instructions
 
-Agents become much more powerful when you give them specific instructions, like a job description. Let's make an Agent that fetches stock prices and *always* presents the data in a table, with no extra chat. We'll adapt `agent_with_instructions.py`.
+Agents become much more powerful when you give them specific instructions, like a job description. Let's make an Agent that fetches stock prices and _always_ presents the data in a table, with no extra chat. We'll adapt `agent_with_instructions.py`.
 
 ```python
 # File: agent_with_instructions.py (Simplified for tutorial)
@@ -107,8 +112,8 @@ stock_reporter.print_response("What is the stock price of Apple?", stream=True)
 **Explanation:**
 
 1.  **Instructions:** We create a list of strings, telling the Agent exactly how we want it to behave.
-2.  **Create:** When creating the `stock_reporter` Agent, we pass this list using the `instructions=` parameter. We also give it a [Tool](03_tools_.md) (`YFinanceTools`) so it can actually *get* the stock price (don't worry too much about this yet, [Tools](03_tools_.md) are next!).
-3.  **Run:** When we ask for Apple's stock price, the Agent follows its instructions. It gets the price using its tool, and then formats the answer *only* as a Markdown table, exactly as instructed.
+2.  **Create:** When creating the `stock_reporter` Agent, we pass this list using the `instructions=` parameter. We also give it a [Tool](03_tools_.md) (`YFinanceTools`) so it can actually _get_ the stock price (don't worry too much about this yet, [Tools](03_tools_.md) are next!).
+3.  **Run:** When we ask for Apple's stock price, the Agent follows its instructions. It gets the price using its tool, and then formats the answer _only_ as a Markdown table, exactly as instructed.
 
 This shows how instructions allow you to customize an Agent's behavior for its specific role.
 
@@ -172,11 +177,11 @@ You've now met the **Agent**, the fundamental building block for creating specia
 
 Key Takeaways:
 
-*   An Agent is like a specialized AI worker designed for a specific role (e.g., researcher, writer, analyst).
-*   It uses a [Model](01_model_.md) as its "brain".
-*   You guide its behavior using `instructions`.
-*   Agents can be given `name`s and `role`s for clarity.
-*   They form the core of most Agno applications.
+- An Agent is like a specialized AI worker designed for a specific role (e.g., researcher, writer, analyst).
+- It uses a [Model](01_model_.md) as its "brain".
+- You guide its behavior using `instructions`.
+- Agents can be given `name`s and `role`s for clarity.
+- They form the core of most Agno applications.
 
 Agents are powerful on their own, but they become truly superhuman when they can use **Tools** to interact with the outside world or perform complex calculations. Let's dive into that next!
 

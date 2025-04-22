@@ -1,14 +1,23 @@
 ---
-title: Home
-layout: home
+layout: default
+title: "Home"
+nav_order: 1
 ---
 
 # Agno Cookbook Examples Tutorial
 
 Agno helps you build AI assistants called **Agents**. Think of an _Agent_ as a specialized worker that uses an AI **Model** (like GPT-4o) as its brain.
-You can give _Agents_ **Tools** (like web search or calculators) to perform actions, **Knowledge** (like documents) to reference information, **Memory** to remember conversations, and **Storage** to save chats.
-**Reasoning Tools** help _Agents_ think step-by-step.
+
+_Agents_ can be enhanced with:
+
+- **Tools**: (like web search or calculators) to perform actions.
+- **Knowledge**: (like documents) to reference information.
+- **Memory**: To remember conversations.
+- **Storage**: To save chats.
+- **Reasoning Tools**: To help _Agents_ think step-by-step.
+
 Multiple _Agents_ can work together in a **Team**, coordinated by a leader or collaborating freely.
+
 Finally, you can build interactive web interfaces using **Streamlit Applications** to chat with your _Agents_ and _Teams_.
 
 **Source Repository:** [https://github.com/agno-agi/agno/tree/main/cookbook/examples](https://github.com/agno-agi/agno/tree/main/cookbook/examples)

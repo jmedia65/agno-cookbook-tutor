@@ -1,29 +1,35 @@
+---
+layout: default
+title: "Storage"
+---
+
 # Chapter 7: Storage
 
-In the [previous chapter](06_memory_.md), we learned about **[Memory](06_memory_.md)**, which gives our **[Agent](02_agent_.md)** a short-term recall, like a notepad, to remember details within a single conversation or specific facts about a user. This is great for making interactions feel more natural and context-aware *during* a chat session.
+In the [previous chapter](06_memory_.md), we learned about **[Memory](06_memory_.md)**, which gives our **[Agent](02_agent_.md)** a short-term recall, like a notepad, to remember details within a single conversation or specific facts about a user. This is great for making interactions feel more natural and context-aware _during_ a chat session.
 
-But what happens when the conversation ends, or the program stops? By default, everything the agent remembered using its [Memory](06_memory_.md) might be lost. What if you want to chat with your agent today, close the application, and then pick up the *exact same conversation* tomorrow, with the agent remembering everything that was said before?
+But what happens when the conversation ends, or the program stops? By default, everything the agent remembered using its [Memory](06_memory_.md) might be lost. What if you want to chat with your agent today, close the application, and then pick up the _exact same conversation_ tomorrow, with the agent remembering everything that was said before?
 
 This is where **Storage** comes in! It's like saving your work in a document so you can reopen it later.
 
 ## What is Storage?
 
-Think of **Storage** as your [Agent](02_agent_.md)'s long-term archive or filing cabinet. While [Memory](06_memory_.md) helps the agent remember things *right now* (like the last few messages or the user's name), **Storage** saves the *entire* conversation history – every user message, every agent response, even tool calls – permanently to a file or database.
+Think of **Storage** as your [Agent](02_agent_.md)'s long-term archive or filing cabinet. While [Memory](06_memory_.md) helps the agent remember things _right now_ (like the last few messages or the user's name), **Storage** saves the _entire_ conversation history – every user message, every agent response, even tool calls – permanently to a file or database.
 
 Imagine writing an essay:
-*   **[Memory](06_memory_.md):** Remembering the sentence you just wrote or the main point of the current paragraph.
-*   **Storage:** Clicking "Save" on your Word document, preserving the whole essay so you can close the program and continue writing tomorrow.
+
+- **[Memory](06_memory_.md):** Remembering the sentence you just wrote or the main point of the current paragraph.
+- **Storage:** Clicking "Save" on your Word document, preserving the whole essay so you can close the program and continue writing tomorrow.
 
 Storage provides **persistence**. It allows you to:
 
-*   **Resume conversations:** Start a chat, stop, and continue later exactly where you left off.
-*   **Load past interactions:** Give the agent context from previous conversations.
-*   **Analyze history:** Review past chats for debugging, performance analysis, or auditing.
+- **Resume conversations:** Start a chat, stop, and continue later exactly where you left off.
+- **Load past interactions:** Give the agent context from previous conversations.
+- **Analyze history:** Review past chats for debugging, performance analysis, or auditing.
 
 Agno supports different storage "backends," like:
 
-*   **SQLite:** Saves the history to a simple file on your computer (great for getting started).
-*   **Postgres:** Saves the history to a powerful database (good for larger applications).
+- **SQLite:** Saves the history to a simple file on your computer (great for getting started).
+- **Postgres:** Saves the history to a powerful database (good for larger applications).
 
 ## Using Storage to Save Conversations
 
@@ -86,13 +92,13 @@ chat_agent.print_response("What is my name?")
 1.  **Import:** We import `Agent`, the [Model](01_model_.md) (`Claude`), and the specific storage backend we want (`SqliteStorage`).
 2.  **Configure Storage:** We create an instance of `SqliteStorage`, telling it to save data in a file named `agents.db` inside a `tmp` directory, using a table named `agent_sessions`.
 3.  **Create Agent with Storage:** This is the key step! When creating the `Agent`, we pass our `agent_storage` object to the `storage=` parameter.
-    *   `session_id`: This is crucial. Every message saved to Storage is tagged with this ID. If you create an agent later with the *same* `session_id`, it will retrieve and continue that specific conversation. If you don't provide one, Agno generates a unique ID automatically.
-    *   `add_history_to_messages=True`: This tells the agent to actually *load* the saved history from Storage and include it in the prompt sent to the [Model](01_model_.md). Storage saves the history, but this parameter makes the agent *use* it for context.
-    *   `num_history_runs=3`: Limits how many past conversation turns (user message + agent response) are loaded from storage to keep the prompt concise.
-4.  **Session ID:** We print the `session_id` being used. If you run this script multiple times *without* setting a fixed `session_id`, you'll get a new ID each time, starting a new chat. If you *do* set a fixed `session_id`, running the script again will continue the *same* chat.
+    - `session_id`: This is crucial. Every message saved to Storage is tagged with this ID. If you create an agent later with the _same_ `session_id`, it will retrieve and continue that specific conversation. If you don't provide one, Agno generates a unique ID automatically.
+    - `add_history_to_messages=True`: This tells the agent to actually _load_ the saved history from Storage and include it in the prompt sent to the [Model](01_model_.md). Storage saves the history, but this parameter makes the agent _use_ it for context.
+    - `num_history_runs=3`: Limits how many past conversation turns (user message + agent response) are loaded from storage to keep the prompt concise.
+4.  **Session ID:** We print the `session_id` being used. If you run this script multiple times _without_ setting a fixed `session_id`, you'll get a new ID each time, starting a new chat. If you _do_ set a fixed `session_id`, running the script again will continue the _same_ chat.
 5.  **Interact:** Each time `chat_agent.print_response(...)` is called, the agent not only gets a response but also automatically saves both the user's input and its own output to the `SqliteStorage` database, tagged with the `session_id`. When answering "What is my name?", the agent (because `add_history_to_messages=True`) loads the previous turn ("Hello! My name is Alex.") from storage, allowing it to answer correctly.
 
-If you stopped the script now and ran it again *with the same `session_id`*, the agent would still know your name!
+If you stopped the script now and ran it again _with the same `session_id`_, the agent would still know your name!
 
 ## Retrieving Chat History
 
@@ -171,12 +177,12 @@ You've learned about **Storage**, the mechanism in Agno for achieving long-term 
 
 Key Takeaways:
 
-*   Storage saves the entire interaction history (user messages, agent responses, tool calls).
-*   It allows conversations to be resumed across different sessions or application restarts.
-*   You configure it using the `storage=` parameter when creating an [Agent](02_agent_.md), choosing a backend like `SqliteStorage` or `PostgresStorage`.
-*   The `session_id` is the key identifier that links messages to a specific conversation.
-*   Parameters like `add_history_to_messages` control how the saved history is used for context by the agent.
-*   You can retrieve the full history using `agent.get_messages_for_session()`.
+- Storage saves the entire interaction history (user messages, agent responses, tool calls).
+- It allows conversations to be resumed across different sessions or application restarts.
+- You configure it using the `storage=` parameter when creating an [Agent](02_agent_.md), choosing a backend like `SqliteStorage` or `PostgresStorage`.
+- The `session_id` is the key identifier that links messages to a specific conversation.
+- Parameters like `add_history_to_messages` control how the saved history is used for context by the agent.
+- You can retrieve the full history using `agent.get_messages_for_session()`.
 
 So far, we've focused mainly on individual [Agents](02_agent_.md). But what if you need multiple specialized agents to collaborate on a complex task? That's where a **Team** comes in, and we'll explore how to build and manage them next!
 

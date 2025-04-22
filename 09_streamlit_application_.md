@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Streamlit"
+---
+
 # Chapter 9: Streamlit Application
 
 Welcome to the final chapter of our core concepts tutorial! In the [previous chapter](08_team_.md), we saw how to assemble a **[Team](08_team_.md)** of specialized **[Agents](02_agent_.md)** to tackle complex tasks collaboratively. We've built powerful AI assistants and teams, but so far, we've mostly interacted with them by running Python scripts in the terminal.
@@ -10,24 +15,24 @@ This is where **Streamlit** comes in! It's a fantastic tool often used in the `a
 
 Imagine you've built an amazing Agno [Agent](02_agent_.md) that can answer questions about Formula 1 racing, using its [Knowledge](05_knowledge_.md) of a database and its [Tools](03_tools_.md) to fetch live results. You want your friend, who loves F1 but doesn't code, to be able to use it. Asking them to run Python code isn't ideal.
 
-Instead, you can build a **Streamlit Application**. Think of Streamlit as a super-fast way to build a web page *using only Python*. You don't need to learn complex web technologies like HTML, CSS, or JavaScript.
+Instead, you can build a **Streamlit Application**. Think of Streamlit as a super-fast way to build a web page _using only Python_. You don't need to learn complex web technologies like HTML, CSS, or JavaScript.
 
 With Streamlit, you can easily create:
 
-*   Chat windows to talk to your [Agent](02_agent_.md) or [Team](08_team_.md).
-*   Buttons to trigger actions.
-*   File uploaders to provide documents to your [Knowledge](05_knowledge_.md) base.
-*   Dropdown menus to select different [Models](01_model_.md) or options.
-*   Ways to display results, tables, and even charts.
+- Chat windows to talk to your [Agent](02_agent_.md) or [Team](08_team_.md).
+- Buttons to trigger actions.
+- File uploaders to provide documents to your [Knowledge](05_knowledge_.md) base.
+- Dropdown menus to select different [Models](01_model_.md) or options.
+- Ways to display results, tables, and even charts.
 
 Essentially, Streamlit lets you wrap your Agno logic (Agents, Teams, etc.) in a simple, interactive graphical user interface (GUI) that runs in a web browser.
 
 ## Why Use Streamlit with Agno?
 
-*   **Ease of Use:** Build interactive web apps quickly with just Python.
-*   **Rapid Prototyping:** Quickly create a front-end to test and showcase your Agno agents/teams.
-*   **User-Friendly Interaction:** Allows non-programmers to easily interact with your AI applications (chat, upload files, select options).
-*   **Integration:** Works seamlessly with Python libraries like Agno.
+- **Ease of Use:** Build interactive web apps quickly with just Python.
+- **Rapid Prototyping:** Quickly create a front-end to test and showcase your Agno agents/teams.
+- **User-Friendly Interaction:** Allows non-programmers to easily interact with your AI applications (chat, upload files, select options).
+- **Integration:** Works seamlessly with Python libraries like Agno.
 
 Many examples in the `apps/` directory (like `apps/answer_engine/`, `apps/agentic_rag/`, `apps/sql_agent/`) use Streamlit to provide these web interfaces.
 
@@ -90,10 +95,10 @@ if prompt := st.chat_input("Ask the assistant anything!"):
 5.  **Display History:** We loop through the saved messages and use `st.chat_message()` to display them with the correct role (user or assistant).
 6.  **User Input:** `st.chat_input()` creates the text box at the bottom of the screen for the user to type their message. When the user presses Enter, the entered text is stored in the `prompt` variable.
 7.  **Agent Response:**
-    *   We display the user's `prompt` immediately.
-    *   We then call our Agno `agent.run(prompt)` to get the AI's response.
-    *   We display the response using `st.chat_message("assistant")` and `st.markdown()`.
-    *   Finally, we save the assistant's response to the `st.session_state.messages` history.
+    - We display the user's `prompt` immediately.
+    - We then call our Agno `agent.run(prompt)` to get the AI's response.
+    - We display the response using `st.chat_message("assistant")` and `st.markdown()`.
+    - Finally, we save the assistant's response to the `st.session_state.messages` history.
 
 When you run this Python file using `streamlit run your_app_file.py`, Streamlit starts a web server and opens a browser tab showing this interactive chat interface!
 
@@ -101,16 +106,16 @@ When you run this Python file using `streamlit run your_app_file.py`, Streamlit 
 
 Looking at the example applications in `apps/`, you'll often see these Streamlit elements:
 
-*   **`st.title()`, `st.header()`, `st.markdown()`:** For adding text and headings.
-*   **`st.sidebar`:** Creates a collapsible sidebar area, often used for settings, model selection (`st.selectbox`), or buttons (`st.button`).
-*   **`st.chat_input()`:** The primary way to get text input in a chat interface.
-*   **`st.chat_message()`:** Displays messages in a chat bubble format, differentiating between 'user' and 'assistant'.
-*   **`st.session_state`:** A dictionary-like object to store variables that need to persist across user interactions (reruns). Essential for storing chat history, the loaded Agent/Team instance, user settings, etc.
-*   **`st.spinner()`:** Shows a temporary "loading" message while the agent is processing.
-*   **`st.write_stream()`:** Used with Agno's streaming responses (`agent.run(..., stream=True)`) to display the output word-by-word as it's generated.
-*   **`st.file_uploader()`:** Allows users to upload files (e.g., PDFs for [Knowledge](05_knowledge_.md) in `apps/agentic_rag/app.py`).
-*   **`st.button()`, `st.checkbox()`, `st.selectbox()`, `st.radio()`:** Various input widgets for user interaction.
-*   **`st.rerun()`:** Forces Streamlit to rerun the script immediately, often used after updating `session_state`.
+- **`st.title()`, `st.header()`, `st.markdown()`:** For adding text and headings.
+- **`st.sidebar`:** Creates a collapsible sidebar area, often used for settings, model selection (`st.selectbox`), or buttons (`st.button`).
+- **`st.chat_input()`:** The primary way to get text input in a chat interface.
+- **`st.chat_message()`:** Displays messages in a chat bubble format, differentiating between 'user' and 'assistant'.
+- **`st.session_state`:** A dictionary-like object to store variables that need to persist across user interactions (reruns). Essential for storing chat history, the loaded Agent/Team instance, user settings, etc.
+- **`st.spinner()`:** Shows a temporary "loading" message while the agent is processing.
+- **`st.write_stream()`:** Used with Agno's streaming responses (`agent.run(..., stream=True)`) to display the output word-by-word as it's generated.
+- **`st.file_uploader()`:** Allows users to upload files (e.g., PDFs for [Knowledge](05_knowledge_.md) in `apps/agentic_rag/app.py`).
+- **`st.button()`, `st.checkbox()`, `st.selectbox()`, `st.radio()`:** Various input widgets for user interaction.
+- **`st.rerun()`:** Forces Streamlit to rerun the script immediately, often used after updating `session_state`.
 
 ## Under the Hood: The Streamlit Execution Model
 
@@ -153,10 +158,10 @@ You've now learned about **Streamlit Applications**, the common way Agno example
 
 Key Takeaways:
 
-*   Streamlit allows you to build interactive web apps for your AI using only Python.
-*   It's great for creating chat interfaces, dashboards, and tools for non-programmers to use Agno applications.
-*   Core components include UI elements (`st.title`, `st.chat_input`, `st.chat_message`) and state management (`st.session_state`).
-*   The `apps/` directory in the `agno` examples contains many practical Streamlit applications showcasing different Agno features.
+- Streamlit allows you to build interactive web apps for your AI using only Python.
+- It's great for creating chat interfaces, dashboards, and tools for non-programmers to use Agno applications.
+- Core components include UI elements (`st.title`, `st.chat_input`, `st.chat_message`) and state management (`st.session_state`).
+- The `apps/` directory in the `agno` examples contains many practical Streamlit applications showcasing different Agno features.
 
 This concludes our tour of the fundamental concepts in the Agno examples project! We've covered the journey from the core [Model](01_model_.md) brain, through specialized [Agents](02_agent_.md) equipped with [Tools](03_tools_.md) and [Knowledge](05_knowledge_.md), remembering with [Memory](06_memory_.md), saving with [Storage](07_storage_.md), collaborating in [Teams](08_team_.md), and finally, presenting it all through an interactive [Streamlit Application](09_streamlit_application_.md).
 

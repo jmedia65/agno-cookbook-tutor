@@ -50,7 +50,7 @@ flowchart TD
     A0 -- "Uses for Planning" --> A7
     A1 -- "Coordinates Members" --> A0
     A1 -- "Uses AI Engine (Leader)" --> A2
-    A8 -- "Builds Specialized AI Assistants --> A0
+    A8 -- "Builds Specialized AI Assistants" --> A0
     A8 -- "Builds Multiple Agents" --> A1
 ```
 

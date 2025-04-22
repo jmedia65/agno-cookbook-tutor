@@ -1,8 +1,8 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: Agno Cookbook Tutorial - Learn to Build AI Assistants
+description: A hands-on guide to mastering the Agno framework through practical examples from the official Cookbook.
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://jmedia65.github.io/agno-cookbook-tutorial
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Template Repository: https://github.com/jmedia65/agno-cookbook-tutor

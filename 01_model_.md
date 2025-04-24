@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "01. Models"
+title: "01. Model"
 ---
 
 # Chapter 1: Model

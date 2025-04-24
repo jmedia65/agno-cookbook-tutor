@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "02. Agents"
+title: "02. Agent"
 ---
 
 # Chapter 2: Agent

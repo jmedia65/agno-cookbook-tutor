@@ -5,40 +5,40 @@ title: "05. Knowledge"
 
 # Chapter 5: Knowledge
 
-In the [previous chapter](04_reasoning___thinking_tools_.md), we saw how **[Reasoning / Thinking Tools](04_reasoning___thinking_tools_.md)** help **[Agents](02_agent_.md)** plan and think through complex tasks step-by-step. They improve the _process_ of getting an answer.
+In the [previous chapter](04_reasoning___thinking_tools_.html), we saw how **[Reasoning / Thinking Tools](04_reasoning___thinking_tools_.html)** help **[Agents](02_agent_.html)** plan and think through complex tasks step-by-step. They improve the _process_ of getting an answer.
 
-But what about the information itself? An [Agent](02_agent_.md)'s [Model](01_model_.md) (like GPT-4o or Claude) knows a lot from its training, but that knowledge is:
+But what about the information itself? An [Agent](02_agent_.html)'s [Model](01_model_.html) (like GPT-4o or Claude) knows a lot from its training, but that knowledge is:
 
 1.  **Frozen in time:** It doesn't know about events or information created _after_ it was trained.
 2.  **General:** It might not know the specific details of _your_ company's internal documents, a particular PDF manual, or the latest content on a specific website.
 
 Imagine asking your AI assistant about the features of a brand new product described in a PDF document it's never seen. It won't know the answer!
 
-This is where **Knowledge** comes in. It's like giving your [Agent](02_agent_.md) access to a specific, curated library or database _in addition_ to its general knowledge.
+This is where **Knowledge** comes in. It's like giving your [Agent](02_agent_.html) access to a specific, curated library or database _in addition_ to its general knowledge.
 
 ## What is Knowledge?
 
-Think of the standard [Agent](02_agent_.md) as a smart person who has read a vast encyclopedia (their training data). The **Knowledge** feature is like handing that person a specific folder of documents, a technical manual, or access to a particular website and saying, "You can also look things up in _here_ when you need to answer questions."
+Think of the standard [Agent](02_agent_.html) as a smart person who has read a vast encyclopedia (their training data). The **Knowledge** feature is like handing that person a specific folder of documents, a technical manual, or access to a particular website and saying, "You can also look things up in _here_ when you need to answer questions."
 
-Specifically, Knowledge allows an [Agent](02_agent_.md) to:
+Specifically, Knowledge allows an [Agent](02_agent_.html) to:
 
 - Access information from external sources like PDFs, websites, text files, or even databases.
 - Answer questions based on up-to-date or specialized documents that weren't part of its original training.
 - Provide answers grounded in specific source material.
 
-This process is often called **Retrieval-Augmented Generation (RAG)**. It means the [Agent](02_agent_.md) first **Retrieves** relevant information from the knowledge source you gave it, and then **Augments** its response generation using that retrieved information.
+This process is often called **Retrieval-Augmented Generation (RAG)**. It means the [Agent](02_agent_.html) first **Retrieves** relevant information from the knowledge source you gave it, and then **Augments** its response generation using that retrieved information.
 
 ## How Does Knowledge Work? (The RAG Idea)
 
-So, how does an [Agent](02_agent_.md) efficiently search through potentially large documents like PDFs or websites? It uses a clever system:
+So, how does an [Agent](02_agent_.html) efficiently search through potentially large documents like PDFs or websites? It uses a clever system:
 
 1.  **Indexing the Knowledge:** When you provide documents (like PDFs or website URLs) to the Knowledge component, Agno processes them.
 
     - It breaks the documents down into smaller chunks (paragraphs or sentences).
-    - It uses a special type of [Model](01_model_.md) called an **Embedder** (like `OpenAIEmbedder`) to convert each chunk of text into a list of numbers (called a "vector" or "embedding"). These numbers capture the meaning of the text. Think of it like assigning a unique Dewey Decimal code to every paragraph based on its topic.
+    - It uses a special type of [Model](01_model_.html) called an **Embedder** (like `OpenAIEmbedder`) to convert each chunk of text into a list of numbers (called a "vector" or "embedding"). These numbers capture the meaning of the text. Think of it like assigning a unique Dewey Decimal code to every paragraph based on its topic.
     - These numerical representations (vectors) and the original text chunks are stored in a specialized database called a **Vector Database** (like LanceDB or PgVector). This database is optimized for finding vectors that are "similar" in meaning. Analogy: It's like a super-fast digital index card system for your library.
 
-2.  **Retrieving Information:** When you ask the [Agent](02_agent_.md) a question:
+2.  **Retrieving Information:** When you ask the [Agent](02_agent_.html) a question:
 
     - The Agent converts your question into a vector using the same Embedder model.
     - It asks the Vector Database: "Find the text chunks whose vectors are most similar to my question vector."
@@ -46,9 +46,9 @@ So, how does an [Agent](02_agent_.md) efficiently search through potentially lar
 
 3.  **Generating the Answer:**
     - The Agent takes your original question and the relevant text chunks retrieved from the Knowledge base.
-    - It sends all of this to its main [Model](01_model_.md) (like Claude or GPT-4o).
+    - It sends all of this to its main [Model](01_model_.html) (like Claude or GPT-4o).
     - It essentially tells the Model: "Answer this question, and make sure you use the following information I found in the special library: [retrieved text chunks]."
-    - The [Model](01_model_.md) then generates an answer that incorporates the specific information from your documents.
+    - The [Model](01_model_.html) then generates an answer that incorporates the specific information from your documents.
 
 This RAG process makes the Agent's answers much more relevant and accurate when dealing with specific, external information.
 
@@ -116,7 +116,7 @@ agno_expert.print_response("What are Agents in Agno?", stream=True)
 
 **Explanation:**
 
-1.  **Import:** We import classes for the [Agent](02_agent_.md), [Model](01_model_.md), Knowledge Source (`UrlKnowledge`), Vector Database (`LanceDb`), and Embedder (`OpenAIEmbedder`).
+1.  **Import:** We import classes for the [Agent](02_agent_.html), [Model](01_model_.html), Knowledge Source (`UrlKnowledge`), Vector Database (`LanceDb`), and Embedder (`OpenAIEmbedder`).
 2.  **Define Knowledge Source:**
     - We create `UrlKnowledge`, telling it which web page (`urls=[...]`) contains the information.
     - We configure its `vector_db`. We choose `LanceDb`, specify a local directory (`uri`) to save the index, give the index a name (`table_name`), and tell it which `embedder` (like `OpenAIEmbedder`) to use for converting text to numbers.
@@ -137,7 +137,7 @@ Let's visualize the RAG process when our `agno_expert` answers the question:
 5.  **VectorDB -> VectorDB:** LanceDB searches its index for text chunk vectors that are numerically similar to the question vector.
 6.  **VectorDB -> Knowledge Component:** LanceDB returns the text of the most relevant chunks found (e.g., paragraphs from the Agno docs explaining Agents).
 7.  **Knowledge Component -> Agent:** The Knowledge component passes these relevant text chunks back to the Agent.
-8.  **Agent -> Model:** The Agent constructs a prompt for its `Claude` [Model](01_model_.md). This prompt includes the original question AND the retrieved text chunks. (e.g., "Context from Docs: [chunks about Agno Agents]... Question: What are Agents in Agno?").
+8.  **Agent -> Model:** The Agent constructs a prompt for its `Claude` [Model](01_model_.html). This prompt includes the original question AND the retrieved text chunks. (e.g., "Context from Docs: [chunks about Agno Agents]... Question: What are Agents in Agno?").
 9.  **Model -> Agent:** The `Claude` model generates an answer based on _both_ the question and the provided context chunks.
 10. **Agent -> You:** The Agent presents the final, context-aware answer.
 
@@ -165,7 +165,7 @@ Agno's `Knowledge` classes (`UrlKnowledge`, `PDFKnowledge`, etc.) and `VectorDb`
 
 ## Conclusion
 
-You've now learned about the **Knowledge** feature in Agno, which allows your **[Agents](02_agent_.md)** to access and use information from specific external documents.
+You've now learned about the **Knowledge** feature in Agno, which allows your **[Agents](02_agent_.html)** to access and use information from specific external documents.
 
 Key Takeaways:
 
@@ -178,8 +178,6 @@ Key Takeaways:
 
 Knowledge gives your Agent access to a specific library of _documents_. But what if you want your Agent to remember things from your _conversation_ history? That's where **Memory** comes in. Let's explore that next!
 
-**[Next Chapter: Memory](06_memory_.md)**
+**[Next Chapter: Memory](06_memory_.html)**
 
 ---
-
-Generated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)

@@ -5,21 +5,21 @@ title: "02. Agents"
 
 # Chapter 2: Agent
 
-Welcome back! In the [previous chapter](01_model_.md), we learned about the **[Model](01_model_.md)** – the AI "brain" or "engine" that provides the core intelligence for our applications. We saw how different models (like GPT-4o or Claude) offer various capabilities.
+Welcome back! In the [previous chapter](01_model_html), we learned about the **[Model](01_model_html)** – the AI "brain" or "engine" that provides the core intelligence for our applications. We saw how different models (like GPT-4o or Claude) offer various capabilities.
 
 Now, let's talk about the **Agent**, the star player in the Agno framework!
 
 ## What is an Agent?
 
-If the [Model](01_model_.md) is the engine, think of the **Agent** as the specialized vehicle built around that engine. It's the core building block you'll use most often in Agno.
+If the [Model](01_model_html) is the engine, think of the **Agent** as the specialized vehicle built around that engine. It's the core building block you'll use most often in Agno.
 
-Imagine you're building a company. You wouldn't hire just one person with a general "brain" to do everything, right? You'd hire specialists: a customer support representative, a researcher, a financial analyst, a creative writer, etc. Each specialist has the same basic ability to think (like our AI [Model](01_model_.md)), but they are trained and equipped for a _specific role or task_.
+Imagine you're building a company. You wouldn't hire just one person with a general "brain" to do everything, right? You'd hire specialists: a customer support representative, a researcher, a financial analyst, a creative writer, etc. Each specialist has the same basic ability to think (like our AI [Model](01_model_html)), but they are trained and equipped for a _specific role or task_.
 
 An **Agent** in Agno is exactly like that: a specialized AI assistant designed for a particular job.
 
-- It has a **brain** (the [Model](01_model_.md) we choose for it).
+- It has a **brain** (the [Model](01_model_html) we choose for it).
 - It can follow specific **instructions** (like a job description).
-- It can use **[Tools](03_tools_.md)** (like a researcher using a search engine or a financial analyst using a calculator).
+- It can use **[Tools](03_tools_.html)** (like a researcher using a search engine or a financial analyst using a calculator).
 - It works towards accomplishing **goals** based on its role and the task you give it.
 
 Just like hiring different specialists, you create different Agents in Agno tailored to specific needs.
@@ -65,7 +65,7 @@ basic_assistant.print_response("What is the capital of France?", stream=True)
 
 **Explanation:**
 
-1.  **Import:** We import the `Agent` class itself and the `Claude` [Model](01_model_.md) class (from Anthropic).
+1.  **Import:** We import the `Agent` class itself and the `Claude` [Model](01_model_html) class (from Anthropic).
 2.  **Create:** We create an instance of the `Agent`. The most important part here is `model=Claude(...)`, where we assign its "brain". We're telling it to use Anthropic's Claude Sonnet model. `markdown=True` just makes the output look better in the terminal.
 3.  **Run:** We call the `print_response` method on our `basic_assistant`. We give it the question "What is the capital of France?". The Agent takes this question, sends it to its assigned Claude model, gets the answer back ("Paris"), and prints it nicely.
 
@@ -112,14 +112,14 @@ stock_reporter.print_response("What is the stock price of Apple?", stream=True)
 **Explanation:**
 
 1.  **Instructions:** We create a list of strings, telling the Agent exactly how we want it to behave.
-2.  **Create:** When creating the `stock_reporter` Agent, we pass this list using the `instructions=` parameter. We also give it a [Tool](03_tools_.md) (`YFinanceTools`) so it can actually _get_ the stock price (don't worry too much about this yet, [Tools](03_tools_.md) are next!).
+2.  **Create:** When creating the `stock_reporter` Agent, we pass this list using the `instructions=` parameter. We also give it a [Tool](03_tools_.html) (`YFinanceTools`) so it can actually _get_ the stock price (don't worry too much about this yet, [Tools](03_tools_.html) are next!).
 3.  **Run:** When we ask for Apple's stock price, the Agent follows its instructions. It gets the price using its tool, and then formats the answer _only_ as a Markdown table, exactly as instructed.
 
 This shows how instructions allow you to customize an Agent's behavior for its specific role.
 
 ## Roles and Names
 
-You can also give Agents descriptive names and roles, which helps when organizing them, especially in [Teams](08_team_.md).
+You can also give Agents descriptive names and roles, which helps when organizing them, especially in [Teams](08_team_.html).
 
 ```python
 # File: adapted from agents/agent_team.py
@@ -141,17 +141,17 @@ web_agent = Agent(
 # web_agent.print_response("What's the weather in London?")
 ```
 
-Giving clear names and roles makes your code easier to understand and helps the Agents (especially within a [Team](08_team_.md)) know their responsibilities.
+Giving clear names and roles makes your code easier to understand and helps the Agents (especially within a [Team](08_team_.html)) know their responsibilities.
 
 ## Under the Hood: How Agents Work
 
 When you give an Agent a task (like `agent.print_response("Hello!")`), what actually happens?
 
 1.  **You -> Agent:** You call a method like `print_response` with your input ("Hello!").
-2.  **Agent Prepares:** The Agent takes your input. It looks at its configuration: its `instructions`, its `role`, maybe its [Memory](06_memory_.md) or [Knowledge](05_knowledge_.md) (we'll cover these later!). It prepares a prompt to send to its [Model](01_model_.md). This prompt includes your input, its instructions, and potentially other context.
-3.  **Agent -> Model:** The Agent sends this carefully prepared prompt to the specific AI [Model](01_model_.md) it was assigned (e.g., `Claude`, `OpenAIChat`). This usually involves making an API call to the model provider (like Anthropic or OpenAI).
-4.  **Model Thinks:** The AI [Model](01_model_.md) processes the prompt and generates a response based on its training and the instructions it received.
-5.  **Model -> Agent:** The [Model](01_model_.md) sends the generated response back to the Agent.
+2.  **Agent Prepares:** The Agent takes your input. It looks at its configuration: its `instructions`, its `role`, maybe its [Memory](06_memory_.html) or [Knowledge](05_knowledge_.html) (we'll cover these later!). It prepares a prompt to send to its [Model](01_model_html). This prompt includes your input, its instructions, and potentially other context.
+3.  **Agent -> Model:** The Agent sends this carefully prepared prompt to the specific AI [Model](01_model_html) it was assigned (e.g., `Claude`, `OpenAIChat`). This usually involves making an API call to the model provider (like Anthropic or OpenAI).
+4.  **Model Thinks:** The AI [Model](01_model_html) processes the prompt and generates a response based on its training and the instructions it received.
+5.  **Model -> Agent:** The [Model](01_model_html) sends the generated response back to the Agent.
 6.  **Agent Presents:** The Agent receives the response. It might do some final processing (like ensuring it's formatted as Markdown if `markdown=True`). Then, it delivers the result (e.g., `print_response` prints it to the console).
 
 Here's a simplified diagram:
@@ -169,7 +169,7 @@ sequenceDiagram
     MyAgent-->>User: Display formatted answer
 ```
 
-The `Agent` class in Agno orchestrates this entire process, making it easy for you to leverage the power of the underlying [Model](01_model_.md) with added structure, instructions, and capabilities like using [Tools](03_tools_.md).
+The `Agent` class in Agno orchestrates this entire process, making it easy for you to leverage the power of the underlying [Model](01_model_html) with added structure, instructions, and capabilities like using [Tools](03_tools_.html).
 
 ## Conclusion
 
@@ -178,15 +178,13 @@ You've now met the **Agent**, the fundamental building block for creating specia
 Key Takeaways:
 
 - An Agent is like a specialized AI worker designed for a specific role (e.g., researcher, writer, analyst).
-- It uses a [Model](01_model_.md) as its "brain".
+- It uses a [Model](01_model_html) as its "brain".
 - You guide its behavior using `instructions`.
 - Agents can be given `name`s and `role`s for clarity.
 - They form the core of most Agno applications.
 
 Agents are powerful on their own, but they become truly superhuman when they can use **Tools** to interact with the outside world or perform complex calculations. Let's dive into that next!
 
-**[Next Chapter: Tools](03_tools_.md)**
+**[Next Chapter: Tools](03_tools_.html)**
 
 ---
-
-Generated by [AI Codebase Knowledge Builder](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge)
